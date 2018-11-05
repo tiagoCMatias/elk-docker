@@ -5,19 +5,25 @@
 
 # Run with:
 # docker-compose up
-
-elk:
-  build: .
-  ports:
-    - "5601:5601"
-    - "9200:9200"
-    - "5044:5044"
-  ulimits:
-    nofile:
-      soft: 65536
-      hard: 65536
-  environment:
-      - ES_HEAP_SIZE=1g # set to 50% of mem_limit, but no more than 31g
+version: '2'
+services:
+  elk:
+    build: .
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+    environment:
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  
+    ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+        nofile:
+          soft: 65536
+          hard: 65536
+      mem_limit: 1000000000
+  
 
 #  volumes:
 #    - ./elk:/elk
