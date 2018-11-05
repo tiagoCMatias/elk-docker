@@ -16,13 +16,9 @@ services:
     environment:
         - "ES_JAVA_OPTS=-Xms100m -Xmx100m"  
     ulimits:
-      u: 4096
       memlock:
         soft: -1
         hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
     mem_limit: 1000000000
   
 
