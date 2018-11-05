@@ -22,7 +22,7 @@ services:
         nofile:
           soft: 65536
           hard: 65536
-      mem_limit: 1000000000
+    mem_limit: 1000000000
   
 
 #  volumes:
